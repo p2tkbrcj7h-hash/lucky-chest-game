@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lucky Chest</title>
+</head>
 
+<body style="text-align:center;font-family:Arial">
+
+<h1>🎁 Lucky Chest</h1>
+
+<button onclick="openChest()">Open Chest</button>
+
+<p id="result"></p>
+
+<script>
+function openChest(){
+
+let prizes=[
+"💰 5 coins",
+"🎉 Jackpot",
+"💎 Rare gem",
+"💣 Empty"
+]
+
+let prize=prizes[Math.floor(Math.random()*prizes.length)]
+
+document.getElementById("result").innerText=prize
+
+}
+</script>
+
+</body>
+</html>
