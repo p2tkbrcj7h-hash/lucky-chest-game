@@ -5,17 +5,12 @@
 <title>Tap Coin</title>
 
 <style>
-
 body{
 background:#1b1b2f;
 color:white;
 font-family:Arial;
 text-align:center;
 margin-top:50px;
-}
-
-h1{
-font-size:40px;
 }
 
 #coins{
@@ -41,14 +36,12 @@ transition:0.2s;
 .coin:active{
 transform:scale(1.2);
 }
-
 </style>
-
 </head>
 
 <body>
 
-<h1>💰 Tap Coin</h1>
+<h1>🪙 Tap Coin</h1>
 
 <div id="coins">0</div>
 
@@ -56,21 +49,23 @@ transform:scale(1.2);
 
 <script>
 
-let coins = localStorage.getItem("coins")
+let coins = localStorage.getItem("coins");
 
-if(!coins){
-coins=0
+if(coins === null){
+coins = 0;
+}else{
+coins = parseInt(coins);
 }
 
-document.getElementById("coins").innerText = coins
+document.getElementById("coins").innerText = coins;
 
 function tap(){
 
-coins++
+coins++;
 
-localStorage.setItem("coins", coins)
+localStorage.setItem("coins", coins);
 
-document.getElementById("coins").innerText = coins
+document.getElementById("coins").innerText = coins;
 
 }
 
