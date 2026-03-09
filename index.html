@@ -5,37 +5,30 @@
 <title>Tap Coin</title>
 
 <style>
+
 body{
 background:#1b1b2f;
 color:white;
 font-family:Arial;
 text-align:center;
-margin-top:50px;
+margin-top:40px;
 }
 
 #coins{
-font-size:30px;
+font-size:35px;
 margin:20px;
 }
 
 .coin{
-width:150px;
-height:150px;
-background:gold;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:60px;
-margin:auto;
+width:180px;
 cursor:pointer;
-box-shadow:0 0 20px gold;
-transition:0.2s;
+transition:0.15s;
 }
 
 .coin:active{
 transform:scale(1.2);
 }
+
 </style>
 </head>
 
@@ -45,17 +38,11 @@ transform:scale(1.2);
 
 <div id="coins">0</div>
 
-<div class="coin" onclick="tap()">🪙</div>
+<img class="coin" src="https://cdn-icons-png.flaticon.com/512/138/138292.png" onclick="tap()">
 
 <script>
 
-let coins = localStorage.getItem("coins");
-
-if(coins === null){
-coins = 0;
-}else{
-coins = parseInt(coins);
-}
+let coins = Number(localStorage.getItem("coins")) || 0;
 
 document.getElementById("coins").innerText = coins;
 
