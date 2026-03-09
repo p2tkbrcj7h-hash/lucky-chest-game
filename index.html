@@ -5,88 +5,72 @@
 <title>Tap Coin</title>
 
 <style>
+
 body{
+background:#1b1b2f;
+color:white;
 font-family:Arial;
 text-align:center;
-background:#1e1e2f;
-color:white;
+margin-top:50px;
 }
 
 h1{
-margin-top:20px;
+font-size:40px;
 }
 
-#coin{
-font-size:100px;
+#coins{
+font-size:30px;
+margin:20px;
+}
+
+.coin{
+width:150px;
+height:150px;
+background:gold;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+margin:auto;
 cursor:pointer;
+box-shadow:0 0 20px gold;
 transition:0.2s;
 }
 
-#coin:active{
+.coin:active{
 transform:scale(1.2);
 }
 
-button{
-padding:10px;
-margin:5px;
-font-size:18px;
-border-radius:10px;
-border:none;
-}
-
-.shop{
-margin-top:30px;
-background:#2c2c3f;
-padding:15px;
-border-radius:15px;
-display:inline-block;
-}
 </style>
 
 </head>
 
 <body>
 
-<h1>🪙 Tap Coin</h1>
+<h1>💰 Tap Coin</h1>
 
-<h2 id="coins">0</h2>
+<div id="coins">0</div>
 
-<div id="coin" onclick="tap()">🪙</div>
-
-<div class="shop">
-
-<h3>⭐ Shop</h3>
-
-<button onclick="boost()">x2 coins (10⭐)</button>
-
-<button onclick="mega()">x10 coins (30⭐)</button>
-
-</div>
+<div class="coin" onclick="tap()">🪙</div>
 
 <script>
 
-let coins=0
-let multiplier=1
+let coins = localStorage.getItem("coins")
+
+if(!coins){
+coins=0
+}
+
+document.getElementById("coins").innerText = coins
 
 function tap(){
 
-coins+=multiplier
+coins++
 
-document.getElementById("coins").innerText=coins
+localStorage.setItem("coins", coins)
 
-}
-
-function boost(){
-
-multiplier=2
-alert("Boost activated!")
-
-}
-
-function mega(){
-
-multiplier=10
-alert("Mega boost activated!")
+document.getElementById("coins").innerText = coins
 
 }
 
