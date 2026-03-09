@@ -5,30 +5,28 @@
 <title>Tap Coin</title>
 
 <style>
-
 body{
-background:#1b1b2f;
-color:white;
-font-family:Arial;
-text-align:center;
-margin-top:40px;
+  background:#1b1b2f;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  margin-top:40px;
 }
 
 #coins{
-font-size:35px;
-margin:20px;
+  font-size:35px;
+  margin:20px;
 }
 
 .coin{
-width:180px;
-cursor:pointer;
-transition:0.15s;
+  width:180px;
+  cursor:pointer;
+  transition:0.15s;
 }
 
 .coin:active{
-transform:scale(1.2);
+  transform:scale(1.2);
 }
-
 </style>
 </head>
 
@@ -41,21 +39,23 @@ transform:scale(1.2);
 <img class="coin" src="https://cdn-icons-png.flaticon.com/512/138/138292.png" onclick="tap()">
 
 <script>
-
-let coins = Number(localStorage.getItem("coins")) || 0;
-
-document.getElementById("coins").innerText = coins;
-
-function tap(){
-
-coins++;
-
-localStorage.setItem("coins", coins);
-
-document.getElementById("coins").innerText = coins;
-
+// Telegram WebApp API (если открыто в Telegram)
+if (window.Telegram) {
+    Telegram.WebApp.ready();
+    const user = Telegram.WebApp.initDataUnsafe?.user;
+    console.log("Telegram User:", user);
 }
 
+// Игровая логика Tap Coin
+let coins = Number(localStorage.getItem("coins")) || 0;
+const display = document.getElementById("coins");
+display.innerText = coins;
+
+function tap(){
+    coins++;
+    localStorage.setItem("coins", coins);
+    display.innerText = coins;
+}
 </script>
 
 </body>
